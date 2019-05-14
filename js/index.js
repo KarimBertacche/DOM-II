@@ -1,13 +1,32 @@
 // Your code goes here
 //CASHING VARIABLES FOR TARGETING ELEMENTS IN THE DOM
+const mainNav = document.querySelector('.main-navigation');
+const links = document.querySelectorAll('.nav-link');
 const heroImg = document.querySelector('.intro');
 const logo = document.querySelector('.logo-heading'); 
+const letsGoImg = document.querySelector('.img-content');
+
+links.forEach(el => {
+    el.style.border = '2px solid transparent';
+    el.style.borderRadius = '5px'; 
+    el.style.padding = '5px 10px';
+    el.style.background = 'white';
+})
+
+
+links.forEach(el => {
+    el.addEventListener("dblclick", (event) => {
+        mainNav.style.background = 'dodgerblue';
+        event.target.style.backgroundColor = 'aqua';
+    })
+});
 
 heroImg.addEventListener('mouseover', () => {
     if(heroImg.style.transform === '') {
         heroImg.style.transform = "scale(1.2)";
         heroImg.style.backgroundColor = 'black';
         heroImg.style.color = 'white';
+        heroImg.style.transition = '1s';
     } else {
         mouseOut(); 
     } 
@@ -167,4 +186,20 @@ document.addEventListener('keypress', (event) => {
             audio0.play();
             break;
     }
+});
+
+letsGoImg.addEventListener('drag', (event) => {
+    if(event.target.style.outline === ''){
+        event.target.style.outline = '6px solid green';
+        event.target.style.transform = 'rotate(360deg)';
+        event.target.style.transition = '2s';
+    } else {
+        dropEl();
+    }
+});
+
+const dropEl = letsGoImg.addEventListener('dragend', () => {
+    event.target.style.outline = '';
+    event.target.style.transform = '';
+    event.target.style.transition = '';
 })
