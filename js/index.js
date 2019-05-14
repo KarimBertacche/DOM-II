@@ -1,14 +1,34 @@
 // Your code goes here
 //CASHING VARIABLES FOR TARGETING ELEMENTS IN THE DOM
+const body = document.querySelectorAll('body');
 const mainNav = document.querySelector('.main-navigation');
 const links = document.querySelectorAll('.nav-link');
 const heroImg = document.querySelector('.intro');
 const logo = document.querySelector('.logo-heading'); 
 const letsGoImg = document.querySelectorAll('.img-content');
 const contentText = document.querySelectorAll('.content-section .text-content');
+const destination = document.querySelector('.content-destination');
 
-document.addEventListener('select', () => {
-    console.log('page is been loaded');
+window.addEventListener('resize', (event) => {
+    console.log(event.currentTarget.innerWidth)
+    if(event.currentTarget.innerWidth <= 700){
+        mainNav.style.backgroundColor = 'orange'; 
+    } else if (event.currentTarget.innerWidth > 700){
+        mainNav.style.backgroundColor = '';   
+    }
+    if(event.currentTarget.innerWidth <= 500){
+        document.body.style.color = 'red';
+    } else if (event.currentTarget.innerWidth > 500){
+        document.body.style.color = '';
+    }
+});
+
+window.addEventListener('scroll', (event) => {
+    if(event.currentTarget.scrollY > 250){
+        document.body.style.backgroundColor = 'green';
+    } else if (event.currentTarget.scrollY < 250){
+        document.body.style.backgroundColor = 'white';
+    }
 });
 
 const otherLinks = links.forEach(el => {
@@ -218,7 +238,6 @@ const dropEl = letsGoImg[0].addEventListener('dragend', () => {
     event.target.style.transition = '';
 })
 
-
 letsGoImg[1].addEventListener('mouseenter', (event) => {
     event.target.style.visibility = 'hidden'; 
 });
@@ -227,6 +246,3 @@ contentText[1].addEventListener('mouseover', (event) => {
     letsGoImg[1].style.visibility = 'visible';
 })
 
-// document.addEventListener('resize', () => {
-
-// });
