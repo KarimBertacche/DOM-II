@@ -53,8 +53,8 @@ links.forEach(el => {
     el.addEventListener("click", (event) => {
         event.target.style.backgroundColor = 'yellow';
         event.target.style.border = '3px solid red';
-
         otherLinks;
+        event.preventDefault();
     })
 
 });
@@ -251,26 +251,15 @@ contentText[1].addEventListener('mouseover', (event) => {
 })
 
 destBtn.forEach(el => {
-    el.addEventListener('click', clickMe);
-})
-
-function clickMe(event){
-    console.log(event, 'event was triggered');
-    event.target.border = '3px solid red';
-}
+    el.addEventListener('click', (event) => {
+        event.stopPropagation();
+        console.log('btn -> event was triggered');
+    });
+});
 
 destBox.forEach(el => {
-    el.addEventListener('click', clickMe2);
-})
-
-function clickMe2(event){
-    console.log(event, 'event was triggered');
-    event.stopPropagation();
-    event.target.border = '3px solid red';
-}
-
-
-
-
-
+    el.addEventListener('click', () => {
+        console.log('destinations -> event was triggered')
+    });
+});
 
