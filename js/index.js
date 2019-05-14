@@ -4,21 +4,35 @@ const mainNav = document.querySelector('.main-navigation');
 const links = document.querySelectorAll('.nav-link');
 const heroImg = document.querySelector('.intro');
 const logo = document.querySelector('.logo-heading'); 
-const letsGoImg = document.querySelector('.img-content');
+const letsGoImg = document.querySelectorAll('.img-content');
+const contentText = document.querySelectorAll('.content-section .text-content');
 
-links.forEach(el => {
+document.addEventListener('select', () => {
+    console.log('page is been loaded');
+});
+
+const otherLinks = links.forEach(el => {
     el.style.border = '2px solid transparent';
     el.style.borderRadius = '5px'; 
     el.style.padding = '5px 10px';
     el.style.background = 'white';
-})
+});
 
 
 links.forEach(el => {
     el.addEventListener("dblclick", (event) => {
         mainNav.style.background = 'dodgerblue';
         event.target.style.backgroundColor = 'aqua';
+        otherLinks;
     })
+
+    el.addEventListener("click", (event) => {
+        event.target.style.backgroundColor = 'yellow';
+        event.target.style.border = '3px solid red';
+
+        otherLinks;
+    })
+
 });
 
 heroImg.addEventListener('mouseover', () => {
@@ -188,18 +202,31 @@ document.addEventListener('keypress', (event) => {
     }
 });
 
-letsGoImg.addEventListener('drag', (event) => {
+letsGoImg[0].addEventListener('drag', (event) => {
     if(event.target.style.outline === ''){
         event.target.style.outline = '6px solid green';
         event.target.style.transform = 'rotate(360deg)';
         event.target.style.transition = '2s';
     } else {
-        dropEl();
+        dropEl;
     }
 });
 
-const dropEl = letsGoImg.addEventListener('dragend', () => {
+const dropEl = letsGoImg[0].addEventListener('dragend', () => {
     event.target.style.outline = '';
     event.target.style.transform = '';
     event.target.style.transition = '';
 })
+
+
+letsGoImg[1].addEventListener('mouseenter', (event) => {
+    event.target.style.visibility = 'hidden'; 
+});
+
+contentText[1].addEventListener('mouseover', (event) => {
+    letsGoImg[1].style.visibility = 'visible';
+})
+
+// document.addEventListener('resize', () => {
+
+// });
