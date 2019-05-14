@@ -3,14 +3,16 @@
 const body = document.querySelectorAll('body');
 const mainNav = document.querySelector('.main-navigation');
 const links = document.querySelectorAll('.nav-link');
+const logoHead = document.querySelector('.logo-heading');
 const heroImg = document.querySelector('.intro');
 const logo = document.querySelector('.logo-heading'); 
 const letsGoImg = document.querySelectorAll('.img-content');
 const contentText = document.querySelectorAll('.content-section .text-content');
 const destination = document.querySelector('.content-destination');
+const destBox = document.querySelectorAll('.destination');
+const destBtn = document.querySelectorAll('.destination .btn');
 
 window.addEventListener('resize', (event) => {
-    console.log(event.currentTarget.innerWidth)
     if(event.currentTarget.innerWidth <= 700){
         mainNav.style.backgroundColor = 'orange'; 
     } else if (event.currentTarget.innerWidth > 700){
@@ -26,8 +28,10 @@ window.addEventListener('resize', (event) => {
 window.addEventListener('scroll', (event) => {
     if(event.currentTarget.scrollY > 250){
         document.body.style.backgroundColor = 'green';
+        document.body.style.color = 'white';
     } else if (event.currentTarget.scrollY < 250){
         document.body.style.backgroundColor = 'white';
+        document.body.style.color = '';
     }
 });
 
@@ -245,4 +249,28 @@ letsGoImg[1].addEventListener('mouseenter', (event) => {
 contentText[1].addEventListener('mouseover', (event) => {
     letsGoImg[1].style.visibility = 'visible';
 })
+
+destBtn.forEach(el => {
+    el.addEventListener('click', clickMe);
+})
+
+function clickMe(event){
+    console.log(event, 'event was triggered');
+    event.target.border = '3px solid red';
+}
+
+destBox.forEach(el => {
+    el.addEventListener('click', clickMe2);
+})
+
+function clickMe2(event){
+    console.log(event, 'event was triggered');
+    event.stopPropagation();
+    event.target.border = '3px solid red';
+}
+
+
+
+
+
 
